@@ -28,12 +28,11 @@ public class World {
 
         shapes = new Shape[1]; // an array of references (change to non-zero size)
 
+        // Create the actual Shapes.Shape objects (sub types)
         Circle circle = new Circle(20);
         circle.setFilled(true);
         circle.setVelocity(400,-100);
         shapes[0] = circle;
-        // Create the actual Shapes.Shape objects (sub types)
-        // ....
     }
 
     /**
