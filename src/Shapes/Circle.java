@@ -3,6 +3,8 @@ package Shapes;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.List;
+
 /**
  * Created by Martin on 2016-09-16.
  */
@@ -10,9 +12,8 @@ public class Circle extends FillableShape {
 
     private double diameter;
 
-    public Circle(double diameter){
+    public Circle(){
         super();
-        this.diameter = diameter;
     }
 
 
@@ -34,6 +35,30 @@ public class Circle extends FillableShape {
             gc.fillOval(getX(),getY(), diameter,diameter);
 
 
+    }
+
+    public boolean contains(double x, double y){
+        return (this.getX() < x && this.getY() < y &&
+                this.getX() + this.diameter > x  &&
+                this.getY() + this.diameter > y);
+    }
+
+    @Override
+    public void bounce(Shape[] shapes){
+        for (Shape shape : shapes) {
+
+            if(shape instanceof Line){
+                if (getDx() < 0 && getX() < shape.getX() && getX() > shape.getX()-diameter/2 && getY() < ((Line) shape).getY()) {
+                    setVelocity(Math.abs(getDx()), getDy());
+                    setFilled(!(this.isFilled()));
+                    continue;
+                }
+                if (getDx() > 0 && getX()+diameter > shape.getX() && getX() < shape.getX()-diameter/2 && getY() < ((Line) shape).getY()) {
+                    setVelocity(-Math.abs(getDx()), getDy());
+                    setFilled(!(this.isFilled()));
+                }
+            }
+        }
     }
 
     @Override
