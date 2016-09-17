@@ -27,7 +27,7 @@ public class World {
         this.width = width;
         this.height = height;
 
-        shapes = new Shape[4]; // an array of references (change to non-zero size)
+        shapes = new Shape[4]; // an array of references
 
         // Create the actual Shapes.Shape objects (sub types)
         Circle circle = new Circle();
