@@ -46,8 +46,8 @@ public class World {
         shapes[6] = line;
 
         Line line2 = new Line();
-        line2.setX2(100);
-        line2.setX(100);
+        line2.setX2(101);
+        line2.setX(101);
         line2.setVelocity(0,200);
         shapes[7] = line2;
     }
