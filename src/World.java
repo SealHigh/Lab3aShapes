@@ -27,32 +27,29 @@ public class World {
         this.width = width;
         this.height = height;
 
-        shapes = new Shape[4]; // an array of references
+        shapes = new Shape[8]; // an array of references
 
         // Create the actual Shapes.Shape objects (sub types)
-        Circle circle = new Circle();
-        circle.setDiameter(25);
-        circle.setFilled(true);
-        circle.setVelocity(400,-100);
-        shapes[0] = circle;
+        for(int i = 0; i<6; i++){
+            Circle circle = new Circle();
+            circle.setDiameter(10 + i*2);
+            circle.setFilled(true);
+            circle.setVelocity(50 + 50*i,-50 - 25*i);
+            shapes[i] = circle;
+        }
 
-        Circle circle2 = new Circle();
-        circle2.setDiameter(15);
-        circle2.setFilled(false);
-        circle2.setVelocity(400,-300);
-        shapes[1] = circle2;
 
         Line line = new Line();
         line.setX2(200);
         line.setX(200);
         line.setVelocity(0,100);
-        shapes[2] = line;
+        shapes[6] = line;
 
         Line line2 = new Line();
         line2.setX2(100);
         line2.setX(100);
         line2.setVelocity(0,200);
-        shapes[3] = line2;
+        shapes[7] = line2;
     }
 
     /**
