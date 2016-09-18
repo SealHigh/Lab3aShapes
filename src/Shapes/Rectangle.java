@@ -58,7 +58,6 @@ public class Rectangle extends FillableShape {
         }
     }
 
-
     @Override
     public void paint(GraphicsContext gc) {
         gc.setFill(Color.GREEN);

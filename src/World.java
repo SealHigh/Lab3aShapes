@@ -1,8 +1,5 @@
 
-import Shapes.Circle;
-import Shapes.FillableShape;
-import Shapes.Line;
-import Shapes.Shape;
+import Shapes.*;
 
 /**
  * A representation of a world containing a set of moving shapes. NB! The worlds
@@ -27,17 +24,17 @@ public class World {
         this.width = width;
         this.height = height;
 
-        shapes = new Shape[8]; // an array of references
+        shapes = new Shape[14]; // an array of references
 
         // Create the actual Shapes.Shape objects (sub types)
-        for(int i = 0; i<6; i++){
+        for(int i = 0; i<6; i++) {
             Circle circle = new Circle();
             circle.setDiameter(10 + i*2);
             circle.setFilled(true);
             circle.setVelocity(50 + 50*i,-50 - 25*i);
+
             shapes[i] = circle;
         }
-
 
         Line line = new Line();
         line.setX2(200);
@@ -50,6 +47,14 @@ public class World {
         line2.setX2(101);
         line2.setX(101);
         shapes[7] = line2;
+
+        for(int i = 8; i<14; i++) {
+            Rectangle rect = new Rectangle(10+i*2,15+i*2);
+            rect.setFilled(true);
+            rect.setVelocity(50+1*i, -50 - 1*i);
+
+            shapes[i] = rect;
+        }
     }
 
     /**
