@@ -176,6 +176,17 @@ abstract public class Shape {
         }
     }
 
+    protected Double[] getNormal(Double aX,Double aY,Double bX,Double bY){
+        Double[] result = new Double[2];
+        result[1] = bX-aX;
+        result[0] = bY-aY;
+        return result;
+    }
+
+    protected Double dotProduct(Double aX,Double aY,Double bX,Double bY){
+        return aX * bX + aY*bY;
+    }
+
     @Override
     public String toString() {
         String info

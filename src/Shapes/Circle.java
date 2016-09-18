@@ -41,18 +41,6 @@ public class Circle extends FillableShape {
                 this.getY() + this.diameter > y);
     }
 
-    private Double[] getNormal(Double aX,Double aY,Double bX,Double bY){
-        Double[] result = new Double[2];
-        result[1] = bX-aX;
-        result[0] = bY-aY;
-        return result;
-    }
-
-    private Double dotProduct(Double aX,Double aY,Double bX,Double bY){
-            Double result = aX * bX + aY*bY;
-            return result;
-    }
-
     @Override
     public void bounce(Shape[] shapes){
         for (Shape shape : shapes) {
