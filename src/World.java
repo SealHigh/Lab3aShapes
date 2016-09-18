@@ -46,9 +46,9 @@ public class World {
         shapes[6] = line;
 
         Line line2 = new Line();
+        line2.setY2(200);
         line2.setX2(101);
         line2.setX(101);
-        line2.setVelocity(0,200);
         shapes[7] = line2;
     }
 
@@ -70,14 +70,14 @@ public class World {
      * @param elapsedTimeNs the elpsed time in nanoseconds
      */
     public void move(long elapsedTimeNs) {
-        // alterantive loop: for(Shapes.Shape s : shapes) { ...
-        for (int i = 0; i < shapes.length; i++) {
-            shapes[i].move(elapsedTimeNs);
-            shapes[i].constrain(0, 0, width, height);
-            if(shapes[i] instanceof Circle)
-              shapes[i].bounce(shapes);
+        for (Shape shape: shapes) {
+            shape.move(elapsedTimeNs);
+            shape.constrain(0, 0, width, height);
+
+            if(shape instanceof FillableShape) //If shape is a circle bounce on lines
+              shape.bounce(shapes);
         }
-        System.out.println(width + ", " + height);
+        //System.out.println(width + ", " + height);
     }
 
     /**
