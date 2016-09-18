@@ -71,6 +71,10 @@ public class Rectangle extends FillableShape {
 
     @Override
     public void constrain(double boxX, double boxY, double boxWidth, double boxHeight) {
+
+        double tmpGetDx = getDx();
+        double tmpGetDy = getDy();
+
         if(getX() < boxX)
             setVelocity(Math.abs(getDx()), getDy());
         else if(getX() > boxWidth - width)
@@ -80,5 +84,8 @@ public class Rectangle extends FillableShape {
             setVelocity(getDx(), Math.abs(getDy()));
         else if(getY() > boxHeight - height)
             setVelocity(getDx(), -Math.abs(getDy()));
+
+        if(tmpGetDx != getDx() || tmpGetDy != getDy())
+            latestBounce = null;
     }
 }

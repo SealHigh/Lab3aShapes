@@ -67,22 +67,25 @@ public class Circle extends FillableShape {
     public void constrain(
             double boxX, double boxY,
             double boxWidth, double boxHeight) {
+
+        double tmpGetDx = getDx();
+        double tmpGetDy = getDy();
+
         // If outside the box - calculate new dx and dy
         if (getX() < boxX) {
-            latestBounce = null;
             setVelocity(Math.abs(getDx()), getDy());
         } else if (getX() > boxWidth-diameter)  //Compensate for the fact that getX is on left side of shape
         {
-            latestBounce = null;
             setVelocity(-Math.abs(getDx()), getDy());
         }
         if (getY() < boxY) {
-            latestBounce = null;
             setVelocity(getDx(), Math.abs(getDy()));
         } else if (getY() > boxHeight-diameter) //Compensate for the fact that getY is on top side of shape
         {
-            latestBounce = null;
             setVelocity(getDx(), -Math.abs(getDy()));
         }
+
+        if(tmpGetDx != getDx() || tmpGetDy != getDy())
+            latestBounce = null;
     }
 }
