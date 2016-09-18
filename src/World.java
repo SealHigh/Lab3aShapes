@@ -1,7 +1,7 @@
 
 import Shapes.Circle;
 import Shapes.FillableShape;
-import Shapes.Line;
+import Shapes.Rectangle;
 import Shapes.Shape;
 
 /**
@@ -27,29 +27,18 @@ public class World {
         this.width = width;
         this.height = height;
 
-        shapes = new Shape[8]; // an array of references
+        shapes = new Shape[2]; // an array of references (change to non-zero size)
 
         // Create the actual Shapes.Shape objects (sub types)
-        for(int i = 0; i<6; i++){
-            Circle circle = new Circle();
-            circle.setDiameter(10 + i*2);
-            circle.setFilled(true);
-            circle.setVelocity(50 + 50*i,-50 - 25*i);
-            shapes[i] = circle;
-        }
+        Circle circle = new Circle(20);
+        circle.setFilled(false);
+        circle.setVelocity(4,-100);
+        shapes[0] = circle;
 
-
-        Line line = new Line();
-        line.setX2(200);
-        line.setX(200);
-        line.setVelocity(0,100);
-        shapes[6] = line;
-
-        Line line2 = new Line();
-        line2.setX2(101);
-        line2.setX(101);
-        line2.setVelocity(0,200);
-        shapes[7] = line2;
+        Rectangle rect = new Rectangle(200,200);
+        rect.setFilled(false);
+        rect.setVelocity(100,50);
+        shapes[1] = rect;
     }
 
     /**
@@ -74,8 +63,6 @@ public class World {
         for (int i = 0; i < shapes.length; i++) {
             shapes[i].move(elapsedTimeNs);
             shapes[i].constrain(0, 0, width, height);
-            if(shapes[i] instanceof Circle)
-              shapes[i].bounce(shapes);
         }
         System.out.println(width + ", " + height);
     }

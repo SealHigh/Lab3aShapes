@@ -16,7 +16,6 @@ public class Circle extends FillableShape {
         super();
     }
 
-
     public double getDiameter() {
         return diameter;
     }
@@ -28,13 +27,11 @@ public class Circle extends FillableShape {
     @Override
     public void paint(GraphicsContext gc){
         gc.setFill(Color.RED);
-        gc.setStroke(Color.GREEN);
+        gc.setStroke(Color.BLACK);
         if(!isFilled())
             gc.strokeOval(getX(),getY(), diameter,diameter);
         else
             gc.fillOval(getX(),getY(), diameter,diameter);
-
-
     }
 
     public boolean contains(double x, double y){
