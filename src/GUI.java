@@ -62,7 +62,7 @@ public class GUI extends Application {
         }
     }
 
-    // This code initializes the graphics. You do not have to (should not)
+    // This code initializes the graphics. You do not have to (should not )
     // change this code.
     @Override
     public void start(Stage stage) {
