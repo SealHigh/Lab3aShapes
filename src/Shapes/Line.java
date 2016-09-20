@@ -48,6 +48,14 @@ public class Line extends Shape {
 
     @Override
     public void constrain(double boxX, double boxY, double boxWidth, double boxHeight) {
-        super.constrain(boxX, boxY, boxWidth - (getX2() - getX()), boxHeight - (getY2() - getY()));
+        double width = Math.abs(getX2() - getX());
+        double height = Math.abs(getY2() - getY());
+        double centerX = getX2()/2 + getX()/2;
+        double centerY = getY2()/2 + getY()/2;
+        Rectangle rect = new Rectangle(width, height);
+        rect.setX(centerX - width/2); rect.setY(centerY - height/2);
+        rect.setVelocity(getDx(), getDy());
+        rect.constrain(boxX, boxY, boxWidth, boxHeight);
+        setVelocity(rect.getDx(), rect.getDy());
     }
 }

@@ -31,7 +31,7 @@ public class World {
         this.width = width;
         this.height = height;
 
-        shapes = new Shape[14]; // an array of references
+        shapes = new Shape[13]; // an array of references
 
         // Create the actual Shapes.Shape objects (sub types)
         for (int i = 0; i < 6; i++) {
@@ -45,21 +45,21 @@ public class World {
         }
 
         Line line = new Line();
-        line.setX2(50);
-        line.setX(30);
-        line.setX(30);
-        line.setY2(30);
-        line.setVelocity(100, 50);
+        line.setX2(70);
+        line.setX(100);
+        line.setY(100);
+        line.setY2(50);
+        line.setVelocity(100, 100);
         shapes[6] = line;
 
-        Line line2 = new Line();
+        /*Line line2 = new Line();
         line2.setY2(200);
         line2.setX2(101);
         line2.setX(150);
         line2.setY(150);
-        shapes[7] = line2;
+        shapes[7] = line2;*/
 
-        for (int i = 8; i < 14; i++) {
+        for (int i = 7; i < 13; i++) {
             Rectangle rect = new Rectangle(10 + i * 2, 15 + i * 2);
             rect.setFilled(true);
             rect.setVelocity(new Random().nextInt(100)+10, new Random().nextInt(100)+10);
