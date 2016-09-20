@@ -46,19 +46,7 @@ public class Line extends Shape {
         setY2(getY2() + getDy() * elapsedTimeNs / BILLION);
     }
 
-    private double getWidth(){
-        if(getX()< getX2())
-            return (getX2() - getX());
-        else
-            return 0;
-    }
 
-    private double getHeight(){
-        if(getY()< getY2())
-            return (getY2() - getY());
-        else
-            return 0;
-    }
     @Override
     public void constrain(double boxX, double boxY, double boxWidth, double boxHeight) {
         // If outside the box - calculate new dx and dy
@@ -71,6 +59,5 @@ public class Line extends Shape {
             setVelocity(getDx(), Math.abs(getDy()));
         else if (getY() > boxHeight || getY2() > boxHeight) //Compensate for the fact that getY is on top side of shape
             setVelocity(getDx(), -Math.abs(getDy()));
-
     }
 }
