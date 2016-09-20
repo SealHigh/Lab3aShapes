@@ -24,7 +24,7 @@ public class Circle extends FillableShape {
 
     @Override
     public void paint(GraphicsContext gc) {
-        gc.setFill(Color.RED);
+        gc.setFill(getColor());
         gc.setStroke(Color.BLACK);
         if (!isFilled())
             gc.strokeOval(getX(), getY(), diameter, diameter);
@@ -40,19 +40,6 @@ public class Circle extends FillableShape {
 
     @Override
     public void constrain(double boxX, double boxY, double boxWidth, double boxHeight) {
-
-        // If outside the box - calculate new dx and dy
-        if (getX() < boxX) {
-            setVelocity(Math.abs(getDx()), getDy());
-        } else if (getX() > boxWidth - diameter)  //Compensate for the fact that getX is on left side of shape
-        {
-            setVelocity(-Math.abs(getDx()), getDy());
-        }
-        if (getY() < boxY) {
-            setVelocity(getDx(), Math.abs(getDy()));
-        } else if (getY() > boxHeight - diameter) //Compensate for the fact that getY is on top side of shape
-        {
-            setVelocity(getDx(), -Math.abs(getDy()));
-        }
+        super.constrain(boxX, boxY, boxWidth - diameter, boxHeight - diameter);
     }
 }

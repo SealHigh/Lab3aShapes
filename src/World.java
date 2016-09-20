@@ -1,5 +1,12 @@
 
 import Shapes.*;
+import Shapes.Rectangle;
+import Shapes.Shape;
+import javafx.scene.paint.*;
+import javafx.scene.paint.Color;
+
+import java.awt.*;
+import java.util.Random;
 
 /**
  * A representation of a world containing a set of moving shapes. NB! The worlds
@@ -32,6 +39,7 @@ public class World {
             circle.setDiameter(10 + i * 2);
             circle.setFilled(true);
             circle.setVelocity(50 + 50 * i, -50 - 25 * i);
+            circle.setColor(Color.CYAN);
 
             shapes[i] = circle;
         }
@@ -41,7 +49,7 @@ public class World {
         line.setX(30);
         line.setX(30);
         line.setY2(30);
-        line.setVelocity(100, 100);
+        line.setVelocity(100, 50);
         shapes[6] = line;
 
         Line line2 = new Line();
@@ -54,8 +62,8 @@ public class World {
         for (int i = 8; i < 14; i++) {
             Rectangle rect = new Rectangle(10 + i * 2, 15 + i * 2);
             rect.setFilled(true);
-            rect.setVelocity(50 + 1 * i, -50 - 1 * i);
-
+            rect.setVelocity(new Random().nextInt(100)+10, new Random().nextInt(100)+10);
+            rect.setColor(Color.GREEN);
             shapes[i] = rect;
         }
     }

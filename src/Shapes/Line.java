@@ -48,16 +48,6 @@ public class Line extends Shape {
 
     @Override
     public void constrain(double boxX, double boxY, double boxWidth, double boxHeight) {
-        // If outside the box - calculate new dx and dy
-        if (getX() < boxX || getX2() < boxX)
-            setVelocity(Math.abs(getDx()), getDy());
-        else if (getX() > boxWidth || getX2() > boxWidth)  //Compensate for the fact that getX is on left side of shape
-            setVelocity(-Math.abs(getDx()), getDy());
-
-        if (getY() < boxY || getY2() < boxY)
-            setVelocity(getDx(), Math.abs(getDy()));
-        else if (getY() > boxHeight || getY2() > boxHeight) //Compensate for the fact that getY is on top side of shape
-            setVelocity(getDx(), -Math.abs(getDy()));
-
+        super.constrain(boxX, boxY, boxWidth - (getX2() - getX()), boxHeight - (getY2() - getY()));
     }
 }
