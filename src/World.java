@@ -39,7 +39,7 @@ public class World {
         Line line = new Line();
         line.setX2(200);
         line.setX(200);
-        line.setVelocity(0,100);
+        line.setVelocity(0,200);
         shapes[6] = line;
 
         Line line2 = new Line();
