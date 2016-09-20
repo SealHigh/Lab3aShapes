@@ -1,5 +1,12 @@
 
 import Shapes.*;
+import Shapes.Rectangle;
+import Shapes.Shape;
+import javafx.scene.paint.*;
+import javafx.scene.paint.Color;
+
+import java.awt.*;
+import java.util.Random;
 
 /**
  * A representation of a world containing a set of moving shapes. NB! The worlds
@@ -17,7 +24,7 @@ public class World {
      * Creates a new world, containing a pad and a set of balls. NB! The worlds
      * y-axis points downward.
      *
-     * @param width the width of this world
+     * @param width  the width of this world
      * @param height the height of this worl
      */
     public World(double width, double height) {
@@ -27,32 +34,36 @@ public class World {
         shapes = new Shape[14]; // an array of references
 
         // Create the actual Shapes.Shape objects (sub types)
-        for(int i = 0; i<6; i++) {
+        for (int i = 0; i < 6; i++) {
             Circle circle = new Circle();
-            circle.setDiameter(10 + i*2);
+            circle.setDiameter(10 + i * 2);
             circle.setFilled(true);
-            circle.setVelocity(50 + 50*i,-50 - 25*i);
+            circle.setVelocity(50 + 50 * i, -50 - 25 * i);
+            circle.setColor(Color.CYAN);
 
             shapes[i] = circle;
         }
 
         Line line = new Line();
-        line.setX2(200);
-        line.setX(200);
-        line.setVelocity(0,200);
+        line.setX2(50);
+        line.setX(30);
+        line.setX(30);
+        line.setY2(30);
+        line.setVelocity(100, 50);
         shapes[6] = line;
 
         Line line2 = new Line();
         line2.setY2(200);
         line2.setX2(101);
-        line2.setX(101);
+        line2.setX(150);
+        line2.setY(150);
         shapes[7] = line2;
 
-        for(int i = 8; i<14; i++) {
-            Rectangle rect = new Rectangle(10+i*2,15+i*2);
+        for (int i = 8; i < 14; i++) {
+            Rectangle rect = new Rectangle(10 + i * 2, 15 + i * 2);
             rect.setFilled(true);
-            rect.setVelocity(50+1*i, -50 - 1*i);
-
+            rect.setVelocity(new Random().nextInt(100)+10, new Random().nextInt(100)+10);
+            rect.setColor(Color.GREEN);
             shapes[i] = rect;
         }
     }
@@ -75,14 +86,13 @@ public class World {
      * @param elapsedTimeNs the elpsed time in nanoseconds
      */
     public void move(long elapsedTimeNs) {
-        for (Shape shape: shapes) {
+        for (Shape shape : shapes) {
             shape.move(elapsedTimeNs);
             shape.constrain(0, 0, width, height);
 
-            if(shape instanceof FillableShape) //If shape is a circle bounce on lines
-              shape.bounce(shapes);
+            /*if (shape instanceof FillableShape)
+                ((FillableShape) shape).setFilled(!((FillableShape) shape).isFilled());*/
         }
-        //System.out.println(width + ", " + height);
     }
 
     /**

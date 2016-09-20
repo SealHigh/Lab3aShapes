@@ -147,8 +147,6 @@ abstract public class Shape {
      * @param gc the GraphicsContext for drawing
      */
     abstract public void paint(GraphicsContext gc);
-
-    abstract public void bounce(Shape[] shapes);
     /**
      * Constrains the shape inside the given area/box, by bouncing it off att
      * the edges. The shape is considered a point in this implementation which
@@ -174,24 +172,5 @@ abstract public class Shape {
         } else if (y > boxHeight) {
             dy = -Math.abs(dy);
         }
-    }
-
-    protected Double[] getNormal(Double aX,Double aY,Double bX,Double bY){
-        Double[] result = new Double[2];
-        result[1] = bX-aX;
-        result[0] = bY-aY;
-        return result;
-    }
-
-    protected Double dotProduct(Double aX,Double aY,Double bX,Double bY){
-        return aX * bX + aY*bY;
-    }
-
-    @Override
-    public String toString() {
-        String info
-                = this.getClass().getName() + ": x=" + x + ", y=" + y
-                + ", color=" + color;
-        return info;
     }
 }
