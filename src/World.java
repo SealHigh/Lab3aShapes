@@ -46,18 +46,21 @@ public class World {
 
         Line line = new Line();
         line.setX2(50);
-        line.setX(30);
-        line.setX(30);
-        line.setY2(30);
+        line.setX(0);
+        line.setY(0);
+        line.setY2(50);
         line.setVelocity(100, 50);
         shapes[6] = line;
 
+        //Used to not work
         Line line2 = new Line();
-        line2.setY2(200);
-        line2.setX2(101);
-        line2.setX(150);
-        line2.setY(150);
+        line2.setX2(0);
+        line2.setX(50);
+        line2.setY(50);
+        line2.setY2(0);
+        line2.setVelocity(200, 100);
         shapes[7] = line2;
+
 
         for (int i = 8; i < 14; i++) {
             Rectangle rect = new Rectangle(10 + i * 2, 15 + i * 2);
