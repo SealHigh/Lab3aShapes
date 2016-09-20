@@ -147,8 +147,6 @@ abstract public class Shape {
      * @param gc the GraphicsContext for drawing
      */
     abstract public void paint(GraphicsContext gc);
-
-    abstract public void bounce(Shape[] shapes);
     /**
      * Constrains the shape inside the given area/box, by bouncing it off att
      * the edges. The shape is considered a point in this implementation which

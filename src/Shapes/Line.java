@@ -8,14 +8,13 @@ import javafx.scene.paint.Color;
  */
 public class Line extends Shape {
 
-    private double x2,y2;
+    private double x2, y2;
 
-    public Line(){
+    public Line() {
         super();
         this.x2 = 0;
         this.y2 = 0;
     }
-
 
     public double getX2() {
         return x2;
@@ -33,27 +32,26 @@ public class Line extends Shape {
         this.y2 = y2;
     }
 
-
     @Override
-    public void paint(GraphicsContext gc){
+    public void paint(GraphicsContext gc) {
         gc.setStroke(this.getColor());
-        gc.strokeLine(getX(),getY(), getX2(), getY2());
-
+        gc.strokeLine(getX(), getY(), getX2(), getY2());
     }
 
     @Override
-    public void bounce(Shape[] shapes){
-        return;
+    public void move(long elapsedTimeNs) {
+        setX(getX() + getDx() * elapsedTimeNs / BILLION);
+        setY(getY() + getDy() * elapsedTimeNs / BILLION);
+        setX2(getX2() + getDx() * elapsedTimeNs / BILLION);
+        setY2(getY2() + getDy() * elapsedTimeNs / BILLION);
     }
 
     @Override
-    public void constrain(
-            double boxX, double boxY,
-            double boxWidth, double boxHeight) {
+    public void constrain(double boxX, double boxY, double boxWidth, double boxHeight) {
         // If outside the box - calculate new dx and dy
         if (getX() < boxX || getX2() < boxX)
             setVelocity(Math.abs(getDx()), getDy());
-        else if (getX() > boxWidth  || getX2() > boxWidth)  //Compensate for the fact that getX is on left side of shape
+        else if (getX() > boxWidth || getX2() > boxWidth)  //Compensate for the fact that getX is on left side of shape
             setVelocity(-Math.abs(getDx()), getDy());
 
         if (getY() < boxY || getY2() < boxY)
