@@ -32,12 +32,6 @@ public class Circle extends FillableShape {
             gc.fillOval(getX(), getY(), diameter, diameter);
     }
 
-    public boolean contains(double x, double y) {
-        return (this.getX() < x && this.getY() < y &&
-                this.getX() + this.diameter > x &&
-                this.getY() + this.diameter > y);
-    }
-
     @Override
     public void constrain(double boxX, double boxY, double boxWidth, double boxHeight) {
         super.constrain(boxX, boxY, boxWidth - diameter, boxHeight - diameter);

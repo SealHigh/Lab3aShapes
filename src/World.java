@@ -62,6 +62,7 @@ public class World {
         for (int i = 7; i < 13; i++) {
             Rectangle rect = new Rectangle(10 + i * 2, 15 + i * 2);
             rect.setFilled(true);
+            rect.setX(30*(i-7));
             rect.setVelocity(new Random().nextInt(100)+10, new Random().nextInt(100)+10);
             rect.setColor(Color.GREEN);
             shapes[i] = rect;
@@ -86,7 +87,9 @@ public class World {
      * @param elapsedTimeNs the elpsed time in nanoseconds
      */
     public void move(long elapsedTimeNs) {
+
         for (Shape shape : shapes) {
+
             shape.move(elapsedTimeNs);
             shape.constrain(0, 0, width, height);
 

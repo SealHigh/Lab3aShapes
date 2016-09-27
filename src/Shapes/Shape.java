@@ -27,8 +27,8 @@ abstract public class Shape {
      * Initializes a new Shapes.Shape with center at (x,y), the specified color and
      * zero velocity.
      *
-     * @param x center x
-     * @param y center y
+     * @param x     center x
+     * @param y     center y
      * @param color the color
      */
     protected Shape(double x, double y, Color color) {
@@ -147,14 +147,15 @@ abstract public class Shape {
      * @param gc the GraphicsContext for drawing
      */
     abstract public void paint(GraphicsContext gc);
+
     /**
      * Constrains the shape inside the given area/box, by bouncing it off att
      * the edges. The shape is considered a point in this implementation which
      * causes erratic behaviour at the left and bottom edges. Subtypes must
      * override this method to correct this behaviour.
      *
-     * @param boxX upper left corner of the "box"
-     * @param boxY upper left corner of the "box"
+     * @param boxX      upper left corner of the "box"
+     * @param boxY      upper left corner of the "box"
      * @param boxWidth
      * @param boxHeight
      */
